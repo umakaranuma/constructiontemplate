@@ -12,6 +12,7 @@ import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import WhatsAppFloat from '@/components/WhatsAppFloat';
 import BackToTop from '@/components/BackToTop';
+import SocialSidebar from '@/components/SocialSidebar';
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
       <Footer />
       <WhatsAppFloat />
       <BackToTop />
+      <SocialSidebar />
     </>
   );
 }

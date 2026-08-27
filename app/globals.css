@@ -11,6 +11,7 @@
   --bg-alt:#0e131a;
   --surface:#141a22;
   --surface-2:#1a212b;
+  --surface-rgb:20,26,34;
   --border:rgba(255,255,255,0.08);
   --border-strong:rgba(255,255,255,0.14);
   --text:#eef1f5;
@@ -42,6 +43,7 @@ html[data-theme="light"]{
   --bg-alt:#ffffff;
   --surface:#ffffff;
   --surface-2:#f1f3f7;
+  --surface-rgb:255,255,255;
   --border:rgba(15,20,28,0.08);
   --border-strong:rgba(15,20,28,0.14);
   --text:#12161d;
@@ -97,6 +99,52 @@ h1,h2,h3,h4{font-family:var(--font-sora),sans-serif;line-height:1.2;font-weight:
   transition:opacity .3s ease;left:-500px;top:-500px;
 }
 @media(max-width:900px){.cursor-glow{display:none;}}
+
+/* ---------- Social Sidebar: small floating glass icons ---------- */
+.social-sidebar{
+  position:fixed;right:14px;top:50%;z-index:850;
+  display:flex;flex-direction:column;gap:9px;
+  transform:translateY(-50%) translateX(50px);opacity:0;
+  animation:socialSlideIn .7s var(--ease) .4s forwards;
+}
+@keyframes socialSlideIn{to{transform:translateY(-50%) translateX(0);opacity:1;}}
+
+.social-sidebar-link{
+  position:relative;display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;border-radius:50%;overflow:hidden;
+  background:rgba(var(--surface-rgb),0.55);backdrop-filter:blur(10px);
+  border:1px solid rgba(var(--primary-rgb),0.2);
+  box-shadow:0 4px 14px rgba(0,0,0,.15);
+  color:var(--text);font-size:12px;
+  transition:color .3s ease, border-color .3s ease, box-shadow .3s var(--ease), transform .3s var(--ease);
+}
+.social-sidebar-fill{
+  position:absolute;inset:0;background:var(--brand,var(--primary));opacity:0;
+  transition:opacity .3s ease;
+}
+.social-sidebar-icon{position:relative;z-index:1;}
+.social-sidebar-link:hover{
+  color:#fff;border-color:var(--brand,var(--primary));
+  box-shadow:0 6px 18px rgba(0,0,0,.28);transform:scale(1.18) translateX(-2px);
+}
+.social-sidebar-link:hover .social-sidebar-fill{opacity:1;}
+
+.social-sidebar-tooltip{
+  position:absolute;right:calc(100% + 10px);top:50%;
+  transform:translateY(-50%);z-index:1;
+  background:rgba(var(--surface-rgb),0.92);backdrop-filter:blur(4px);
+  color:var(--text);font-size:11px;font-weight:500;letter-spacing:.05em;
+  padding:4px 10px;border-radius:8px;white-space:nowrap;
+  box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;
+  transition:opacity .3s ease;
+}
+.social-sidebar-link:hover .social-sidebar-tooltip{opacity:1;}
+
+@media(max-width:640px){
+  .social-sidebar{right:8px;gap:7px;}
+  .social-sidebar-link{width:26px;height:26px;font-size:10.5px;}
+  .social-sidebar-tooltip{display:none;}
+}
 
 /* ---------- Buttons ---------- */
 .btn{

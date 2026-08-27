@@ -18,6 +18,26 @@ export const WHATSAPP_NUMBER = '94769214278';
 export const waLink = (text: string) =>
   `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
 
+export interface SocialLink {
+  key: string;
+  label: string;
+  icon: string;
+  href: string;
+  brand: string;
+}
+
+export const SOCIAL_LINKS: SocialLink[] = [
+  { key: 'facebook', label: 'Facebook', icon: 'fa-brands fa-facebook-f', href: '#', brand: '#1877F2' },
+  { key: 'instagram', label: 'Instagram', icon: 'fa-brands fa-instagram', href: '#', brand: '#E1306C' },
+  {
+    key: 'whatsapp',
+    label: 'WhatsApp',
+    icon: 'fa-brands fa-whatsapp',
+    href: waLink("Hi ApexBuild! I'd like to get in touch."),
+    brand: '#25D366',
+  },
+];
+
 export const HERO_SLIDES = [
   'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1920&q=80',
   'https://images.unsplash.com/photo-1541976590-713941681591?auto=format&fit=crop&w=1920&q=80',
